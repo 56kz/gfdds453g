@@ -5,14 +5,13 @@ import {App, Page1, Page2, NotFound} from './App';
 import './index.css';
 
 ReactDOM.render(
-  <App >
   <Router history={hashHistory}>
-    <Route path="/" component={Page1} />
-    <Route path="/1" component={Page1} />
-    <Route path="/2" component={Page2} />
-    <Route path="/*" component={NotFound} />
-  </Router>
-
-  </App>,
+  <Route path="/" component={App}>
+    <IndexRedirect to='page1' />
+    <Route path='page1' component={Page1} />
+    <Route path='page2' component={Page2} />
+  </Route>
+  <Route path="*" component={NotFound} />
+  </Router>,
   document.getElementById('root')
 );
